@@ -1,0 +1,8 @@
+WebApp/uploads/
+WebApp/.env
+WebApp/.flaskenv
+.venv
+*.pt
+*.zip
+*.mp4
+*.pdf
