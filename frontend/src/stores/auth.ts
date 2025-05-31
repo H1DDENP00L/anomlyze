@@ -1,16 +1,13 @@
-// src/store/auth.ts
 import { defineStore } from 'pinia'
 import axios from 'axios' 
 import router from '@/router' 
 
-// Определяем базовый URL для нашего API Flask
-const API_URL = 'http://localhost:5000/auth' 
+const API_URL = '/auth' 
 
 interface User {
   id: number;
   username: string;
   email: string; 
-  // Можно добавить другие поля, если API их возвращает и они нужны на фронте
 }
 
 interface AuthState {
@@ -38,7 +35,6 @@ export const useAuthStore = defineStore('auth', {
   },
 
   actions: {
-    // --- Новый Action для получения данных текущего пользователя ---
     async fetchCurrentUser() {
       if (!this.token) {
         return; // Нет токена - нет пользователя
@@ -99,7 +95,6 @@ export const useAuthStore = defineStore('auth', {
         localStorage.setItem('authToken', access_token);
         axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
         
-        // --- ВЫЗЫВАЕМ fetchCurrentUser ПОСЛЕ УСПЕШНОГО ЛОГИНА ---
         await this.fetchCurrentUser(); 
 
         // Редирект только если пользователь успешно загружен (т.е. fetchCurrentUser не вызвал logout)
