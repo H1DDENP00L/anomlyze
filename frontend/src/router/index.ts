@@ -5,6 +5,8 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import DashboardView from '../views/DashboardView.vue'
 import { useAuthStore } from '@/stores/auth' 
+import AnomaliesView from '../views/AnomaliesView.vue';
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,19 +20,25 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: LoginView,
-      meta: { guestOnly: true } // Маршрут только для неаутентифицированных
+      meta: { guestOnly: true } 
     },
     {
       path: '/register',
       name: 'register',
       component: RegisterView,
-      meta: { guestOnly: true } // Маршрут только для неаутентифицированных
+      meta: { guestOnly: true } 
     },
     {
       path: '/dashboard',
       name: 'dashboard',
       component: DashboardView,
-      meta: { requiresAuth: true } // Этот маршрут требует аутентификации
+      meta: { requiresAuth: true } 
+    },
+    {
+      path: '/anomalies',
+      name: 'anomalies',
+      component: AnomaliesView,
+      meta: { requiresAuth: true } 
     }
   ]
 })

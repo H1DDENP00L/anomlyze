@@ -8,6 +8,7 @@ import { useAuthStore } from './stores/auth'
 import axios from 'axios';
 import type { AxiosResponse, AxiosError } from 'axios'; 
 
+axios.defaults.baseURL = 'http://localhost:5000'; 
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.interceptors.response.use(
   (response: AxiosResponse) => response,
@@ -20,7 +21,6 @@ axios.interceptors.response.use(
   }
 );
 
-// --- Vue App Initialization ---
 const app = createApp(App)
 
 app.use(createPinia()) 
